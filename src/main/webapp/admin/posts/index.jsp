@@ -5,7 +5,7 @@
     <title>All Posts</title>
 </head>
 <body>
-
+<a href="post-create">Create Post</a>
 <table>
     <tr>
         <th>#ID</th>
@@ -18,7 +18,7 @@
         <tr>
             <td>${post.id}</td>
             <td>${post.title}</td>
-            <td>${post.categoryId}</td>
+            <td>${post.getCategoryName(post.id)}</td>
             <td>${post.createdAt}</td>
             <td><a href="">Edit</a>
                 <a href="">Delete</a></td>

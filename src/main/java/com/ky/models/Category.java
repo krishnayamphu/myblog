@@ -1,5 +1,7 @@
 package com.ky.models;
 
+import com.ky.dao.CategoryDAO;
+
 public class Category {
     private int id;
     private String name;
@@ -54,4 +56,5 @@ public class Category {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
+
 }

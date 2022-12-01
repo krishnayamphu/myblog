@@ -6,14 +6,14 @@ import com.ky.database.autotables.UserTable;
 
 public class Database {
     public static void run(){
-        UserTable.create();
-        CategoryTable.create();
-        PostTable.create();
+//        UserTable.create();
+//        CategoryTable.create();
+//        PostTable.create();
     }
 
     public static void destroy(){
-        UserTable.remove();
-        CategoryTable.remove();
-        PostTable.remove();
+//        UserTable.remove();
+//        CategoryTable.remove();
+//        PostTable.remove();
     }
 }

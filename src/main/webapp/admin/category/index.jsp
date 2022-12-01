@@ -5,7 +5,7 @@
     <title>All Categories</title>
 </head>
 <body>
-
+<a href="category-create">Create Category</a>
 <table>
     <tr>
         <th>#ID</th>
@@ -20,8 +20,11 @@
             <td>${category.name}</td>
             <td>${category.description}</td>
             <td>${category.createdAt}</td>
-            <td><a href="">Edit</a>
-                <a href="">Delete</a></td>
+            <td><a href="category-edit?id=${category.id}">Edit</a>
+                <form action="category-del" method="post">
+                    <input type="hidden" name="id" value="${category.id}">
+                    <button type="submit">Delete</button>
+                </form>
         </tr>
     </c:forEach>
 </table>

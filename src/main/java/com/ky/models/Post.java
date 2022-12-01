@@ -1,5 +1,7 @@
 package com.ky.models;
 
+import com.ky.dao.CategoryDAO;
+
 public class Post {
     private int id;
     private String title;
@@ -75,5 +77,9 @@ public class Post {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+    public String getCategoryName(int id){
+        Category category=CategoryDAO.getCategory(id);
+        return category.getName();
     }
 }

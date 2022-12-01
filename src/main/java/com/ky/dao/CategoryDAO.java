@@ -34,14 +34,44 @@ public class CategoryDAO {
         }
         return categories;
     }
-
-    public static void addCategory(Category category) {
+    public static Category getCategory(int id) {
+        Category category=new Category();
         try {
             Connection cn = ConnectDB.connect();
-            String sql = "INSERT INTO category (name,description) VALUES (?,?)";
+            String sql = "SELECT * FROM category WHERE id=?";
             PreparedStatement ps = cn.prepareStatement(sql);
-            ps.setString(1, category.getName());
-            ps.setString(2, category.getDescription());
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                category.setId(rs.getInt("id"));
+                category.setName(rs.getString("name"));
+                category.setDescription(rs.getString("description"));
+                category.setCreatedAt(rs.getString("created_at"));
+                category.setUpdatedAt(rs.getString("updated_at"));
+            }
+            cn.close();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return category;
+    }
+
+    public static void addCategory(Category category) throws SQLException {
+        Connection cn = ConnectDB.connect();
+        String sql = "INSERT INTO category (name,description) VALUES (?,?)";
+        PreparedStatement ps = cn.prepareStatement(sql);
+        ps.setString(1, category.getName());
+        ps.setString(2, category.getDescription());
+        ps.executeUpdate();
+        cn.close();
+    }
+
+    public static void deleteCategory(int id) {
+        try {
+            Connection cn = ConnectDB.connect();
+            String sql = "DELETE FROM category WHERE id=?";
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setInt(1, id);
             ps.executeUpdate();
             cn.close();
         } catch (SQLException e) {
@@ -49,23 +79,19 @@ public class CategoryDAO {
         }
     }
 
-    public static boolean auth(String username, String password) {
-        boolean status = false;
+    public static void updateCategory(Category category) {
         try {
             Connection cn = ConnectDB.connect();
-            String sql = "SELECT * FROM users WHERE username=? AND password=?";
+            String sql = "UPDATE category SET name=?,description=? WHERE id=?";
             PreparedStatement ps = cn.prepareStatement(sql);
-            ps.setString(1, username);
-            ps.setString(2, password);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                status = true;
-            }
+            ps.setString(1, category.getName());
+            ps.setString(2, category.getDescription());
+            ps.setInt(3,category.getId());
+            ps.executeUpdate();
             cn.close();
         } catch (SQLException e) {
             System.err.println(e);
         }
-        System.out.println(status);
-        return status;
+
     }
 }

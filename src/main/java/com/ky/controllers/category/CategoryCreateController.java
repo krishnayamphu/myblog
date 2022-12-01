@@ -7,6 +7,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "CategoryCreateController", value = "/category-create")
 public class CategoryCreateController extends HttpServlet {
@@ -20,7 +21,11 @@ public class CategoryCreateController extends HttpServlet {
         String name=request.getParameter("name");
         String description=request.getParameter("desc");
         Category category=new Category(name,description);
-        CategoryDAO.addCategory(category);
-        response.getWriter().print("category item added.");
+        try {
+            CategoryDAO.addCategory(category);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        response.sendRedirect("categories");
     }
 }
