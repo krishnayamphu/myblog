@@ -14,8 +14,9 @@
     <label>Content</label>
     <textarea name="content" id="" cols="30" rows="10"></textarea>
 
-    <input type="text" name="picture" value="a.jpg">
-    <button type="button">Set Image</button>
+    <input type="hidden" id="picture" name="picture" value="">
+    <img id="thumb" src="" width="100" alt="">
+    <button type="button" onclick="showDialog()">Set Image</button>
 
     <label>Category</label>
     <select name="category_id">
@@ -33,7 +34,7 @@
         <button type="button" onclick="closeDialog()"> X </button>
         <c:forEach var="item" items="${files}">
             <div class="card">
-                <img height="100" width="100" src="uploads/${item}" alt="${item}">
+                <img onclick="selectImage('${item}')" height="100" width="100" src="uploads/${item}" alt="${item}">
             </div>
         </c:forEach>
     </div>
@@ -43,6 +44,15 @@
     function closeDialog(){
         document.getElementById("media").style.display="none";
     }
+    function showDialog(){
+        document.getElementById("media").style.display="flex";
+    }
+    function selectImage(name){
+        document.getElementById("picture").value=name;
+        document.getElementById("thumb").src="uploads/"+name;
+        closeDialog();
+    }
+
 </script>
 </body>
 </html>

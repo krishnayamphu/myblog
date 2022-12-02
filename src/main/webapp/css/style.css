@@ -5,13 +5,48 @@
     box-sizing: border-box;
 }
 
+/* header */
+header{
+    background-color: gray;
+}
+.text-brand{
+    padding: 30px;
+}
+
+/* main */
+main{
+    display: flex;
+    height: 100%;
+}
+.sidebar{
+    width: 200px;
+    background-color: #ccc;
+}
+
+.sidebar aside{
+    display: flex;
+    flex-direction: column;
+}
+.sidebar aside a{
+    text-decoration: none;
+    color:black;
+    padding: 5px 15px;
+}
+
+.content{
+    width: calc(100% - 200px);
+    background-color: aliceblue;
+}
+
+
+
 .media-overlay{
     background-color: rgba(0,0,0,0.5);
     position: fixed;
     top:0;
     width: 100%;
     height: 100vh;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
