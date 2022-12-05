@@ -2,32 +2,42 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="css/style.css">
+    <%@include file="../head.jsp"%>
     <title>Create Post</title>
 </head>
 <body>
+<%@include file="../header.jsp"%>
+<main>
+    <div class="sidebar">
+        <%@include file="../sidebar.jsp"%>
+    </div>
+    <div class="content">
+        <h4>New Post</h4>
+        <form action="post-create" method="post">
+            <label>Title</label>
+            <input type="text" name="title" required>
 
-<form action="post-create" method="post">
-    <label>Title</label>
-    <input type="text" name="title" required>
+            <label>Content</label>
+            <textarea name="content" id="" cols="30" rows="10"></textarea>
 
-    <label>Content</label>
-    <textarea name="content" id="" cols="30" rows="10"></textarea>
+            <input type="hidden" id="picture" name="picture" value="">
+            <img id="thumb" src="" width="100" alt="">
+            <button type="button" onclick="showDialog()">Set Image</button>
 
-    <input type="hidden" id="picture" name="picture" value="">
-    <img id="thumb" src="" width="100" alt="">
-    <button type="button" onclick="showDialog()">Set Image</button>
+            <label>Category</label>
+            <select name="category_id">
+                <option value="">Select Category</option>
+                <c:forEach var="category" items="${categories}">
+                    <option value="${category.id}">${category.name}</option>
+                </c:forEach>
+            </select>
 
-    <label>Category</label>
-    <select name="category_id">
-        <option value="">Select Category</option>
-        <c:forEach var="category" items="${categories}">
-            <option value="${category.id}">${category.name}</option>
-        </c:forEach>
-    </select>
+            <button type="submit">Create</button>
+        </form>
 
-    <button type="submit">Create</button>
-</form>
+    </div>
+</main>
+
 
 <div id="media" class="media-overlay">
     <div class="media-container">
