@@ -18,6 +18,14 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username=request.getParameter("username");
         String password=request.getParameter("password");
-        UserDAO.auth(username,password);
+        if(UserDAO.auth(username,password)){
+            HttpSession session=request.getSession();
+            session.setAttribute("user",username);
+            response.sendRedirect("dashboard");
+        }else {
+            String msg="Invalid Username or Password";
+            request.setAttribute("err",msg);
+            request.getRequestDispatcher("admin/users/login.jsp").include(request,response);
+        }
     }
 }

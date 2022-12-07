@@ -26,6 +26,6 @@ public class RegisterController extends HttpServlet {
         user.setEmail(email);
         user.setPassword(password);
         UserDAO.addUser(user);
-        response.getWriter().print("User registered successfully.");
+        response.sendRedirect("login");
     }
 }

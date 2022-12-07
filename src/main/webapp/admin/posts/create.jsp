@@ -41,10 +41,15 @@
 
 <div id="media" class="media-overlay">
     <div class="media-container">
-        <button type="button" onclick="closeDialog()"> X </button>
+        <div class="media-header">
+            <h4>All Media Files</h4>
+            <button type="button" onclick="closeDialog()"> X </button>
+        </div>
+
         <c:forEach var="item" items="${files}">
-            <div class="card">
-                <img onclick="selectImage('${item}')" height="100" width="100" src="uploads/${item}" alt="${item}">
+            <div class="media-card">
+                <img onclick="selectImage('${item}')" src="uploads/${item}" alt="${item}">
+                </div>
             </div>
         </c:forEach>
     </div>
@@ -60,6 +65,7 @@
     function selectImage(name){
         document.getElementById("picture").value=name;
         document.getElementById("thumb").src="uploads/"+name;
+        document.getElementById("thumb").style.display="block";
         closeDialog();
     }
 

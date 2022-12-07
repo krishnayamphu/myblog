@@ -1,0 +1,108 @@
+*{
+    font-family: Arial;
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+
+}
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+nav{
+    background-color: gray;
+
+}
+nav a{
+    display: inline-block;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: white;
+}
+nav .text-brand{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+main .content{
+    width: 70%;
+    padding: 15px;
+    float: left;;
+}
+main .sidebar{
+    width: 30%;
+    padding: 15px;
+    float: left;
+}
+.sidebar h3{
+    background-color: #cccccc;
+    padding: 5px 15px;
+}
+
+/* post */
+.post{
+    padding: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e7e7e7;
+}
+.post:last-child{
+    border-bottom: none;
+}
+.post a{
+    text-decoration: none;
+    color: black;
+}
+.post a:hover{
+    color: #949393;
+    text-decoration: underline;
+}
+.post-content .post-thumb{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+.post-date{
+    padding: 5px 0px;
+    font-size: 14px;
+    font-style: italic;
+    color:#756f6f;
+}
+.post .img-thumbnail{
+    width: 100%;
+    display: block;
+    margin: 15px 0;
+}
+p{
+    line-height: 1.5;
+    text-align: justify;
+    padding: 30px 0;
+}
+
+/* form */
+/* form */
+form label{
+    display: block;
+    margin-bottom: 10px;
+}
+form input{
+    display: block;
+    width: 100%;
+    padding: 5px 15px;
+    margin-bottom: 15px;
+}
+form textarea{
+    width: 100%;
+    margin-bottom: 15px;
+}
+form select{
+    margin-bottom: 15px;
+}
+form img{
+    display: block;
+    margin-bottom: 5px;
+}
+form button{
+    display: block;
+    padding: 3px 6px;
+    margin-bottom: 15px;
+}

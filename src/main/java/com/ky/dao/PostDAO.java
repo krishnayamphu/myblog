@@ -73,4 +73,29 @@ public class PostDAO {
         System.out.println(status);
         return status;
     }
+
+    public static Post getPost(int id) {
+        Post post = new Post();
+        try {
+            Connection cn = ConnectDB.connect();
+            String sql = "SELECT * FROM posts WHERE id=?";
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                post.setId(rs.getInt("id"));
+                post.setTitle(rs.getString("title"));
+                post.setText(rs.getString("text"));
+                post.setPicture(rs.getString("picture"));
+                post.setCategoryId(rs.getInt("category_id"));
+                post.setUserId(rs.getInt("user_id"));
+                post.setCreatedAt(rs.getString("created_at"));
+                post.setUpdatedAt(rs.getString("updated_at"));
+            }
+            cn.close();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return post;
+    }
 }

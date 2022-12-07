@@ -27,6 +27,9 @@ main{
     display: flex;
     flex-direction: column;
 }
+.sidebar hr{
+    margin: 2px 0;
+}
 .sidebar aside a{
     text-decoration: none;
     color:black;
@@ -65,7 +68,7 @@ form img{
 }
 form button{
     display: block;
-    padding: 0 5px;
+    padding: 3px 6px;
     margin-bottom: 15px;
 }
 
@@ -143,8 +146,48 @@ table th, table td{
     align-items: center;
 }
 .media-overlay .media-container{
-    width: 800px;
+    width:80%;
+    display: block;
     background-color: white;
     padding:30px;
     border-radius: 10px;
+}
+.media-overlay .media-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.media-header h4{
+    margin-bottom: 15px;
+}
+.media-header button{
+    padding: 2px 5px;
+}
+#thumb{
+    display: none;
+}
+
+/* login form */
+.register-form{
+    width: 50%;
+    margin: 50px auto;
+}
+.register-form button{
+    padding: 5px 10px;
+}
+.login-form{
+    width: 50%;
+    margin: 50px auto;
+}
+.login-form button{
+    padding: 5px 10px;
+}
+.bg-body{
+    background-color: teal;
+}
+.text-error{
+    color: red;
+}
+hr{
+    margin: 10px 0;
 }
